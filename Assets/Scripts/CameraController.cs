@@ -35,8 +35,11 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            Vector3 movement = transform.rotation * Vector3.forward;
-            cameraController.Move(Vector3.forward * speed * Time.deltaTime);
+            Vector3 dir = Vector3.forward;
+            dir = transform.InverseTransformDirection(dir);
+            dir.y = 0;
+            // dir.Normalize();
+            cameraController.Move(dir * speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
         {
@@ -45,8 +48,11 @@ public class CameraController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            Vector3 movement = transform.rotation * Vector3.back;
-            cameraController.Move(Vector3.back * speed * Time.deltaTime);
+            Vector3 dir = Vector3.back;
+            dir = transform.TransformDirection(dir);
+            dir.y = 0;
+            // dir.Normalize();
+            cameraController.Move(dir * speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
