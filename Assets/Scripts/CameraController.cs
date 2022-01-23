@@ -4,12 +4,13 @@ public class CameraController : MonoBehaviour
 {
     public Transform player;
     public CharacterController cameraController;
+    public Transform target;
 
     public float angleRotationSpeed = 150f;
     public float speed = 17f;
 
-    private Vector3 newCurrentPlayerPos;
-    private Vector3 newCurrentCameraPos;
+    private Vector3 currentPlayerPos;
+    private Vector3 currentTargetPos;
 
     void Start()
     {
@@ -17,18 +18,18 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        // newCurrentCameraPos = transform.position;
-        newCurrentPlayerPos = player.transform.position;
+        currentPlayerPos = player.transform.position;
+        currentTargetPos = target.transform.position;
 
         if (Input.GetKey(KeyCode.Q))
         {
-            transform.RotateAround(newCurrentPlayerPos, Vector3.up, angleRotationSpeed * Time.deltaTime);
+            transform.RotateAround(target.position, Vector3.up, angleRotationSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            transform.RotateAround(newCurrentPlayerPos, Vector3.down, angleRotationSpeed * Time.deltaTime);
+            transform.RotateAround(target.position, Vector3.down, angleRotationSpeed * Time.deltaTime);
         }
 
         // Forward and backwards needs to move according to the global axis, Space.World or similar
@@ -38,7 +39,7 @@ public class CameraController : MonoBehaviour
             Vector3 dir = Vector3.forward;
             dir = transform.InverseTransformDirection(dir);
             dir.y = 0;
-            // dir.Normalize();
+            dir.Normalize();
             cameraController.Move(dir * speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.A))
@@ -51,7 +52,7 @@ public class CameraController : MonoBehaviour
             Vector3 dir = Vector3.back;
             dir = transform.TransformDirection(dir);
             dir.y = 0;
-            // dir.Normalize();
+            dir.Normalize();
             cameraController.Move(dir * speed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
