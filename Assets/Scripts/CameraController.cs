@@ -64,7 +64,7 @@ public class CameraController : MonoBehaviour
             newZoom += Input.mouseScrollDelta.y * zoomAmountScroll;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftAlt))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
@@ -78,7 +78,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftAlt))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
@@ -94,11 +94,11 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftAlt))
         {
             rotateStartPosition = Input.mousePosition;
         }
-        if (Input.GetMouseButton(2))
+        if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftAlt))
         {
             rotateCurrentPosition = Input.mousePosition;
 
@@ -143,12 +143,12 @@ public class CameraController : MonoBehaviour
         // Rotate
         if (Input.GetKey(KeyCode.Q))
         {
-            newRotation *= Quaternion.Euler(Vector3.up * rotationAmount);
+            newRotation *= Quaternion.Euler(-Vector3.up * rotationAmount);
             // transform.RotateAround(cameraTransform.position, Vector3.up, rotationAmount * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.E))
         {
-            newRotation *= Quaternion.Euler(Vector3.up * -rotationAmount);
+            newRotation *= Quaternion.Euler(-Vector3.up * -rotationAmount);
             // transform.RotateAround(cameraTransform.position, Vector3.down, rotationAmount * Time.deltaTime);
         }
 
