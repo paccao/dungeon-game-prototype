@@ -518,14 +518,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 940dfdcfbd7ba594cb00ac768ecaa482, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalSpeed: 0.1
-  fastSpeed: 0.2
-  movementSpeed: 0.1
+  normalSpeed: 0.08
+  fastSpeed: 0.12
+  movementSpeed: 0.08
   movementTime: 5
   rotationAmount: 0.4
-  cameraTransform: {fileID: 0}
+  zoomAmount: {x: 0, y: -0.055, z: 0.055}
+  zoomAmountScroll: {x: 0, y: -2, z: 2}
+  cameraTransform: {fileID: 963194228}
   newPosition: {x: 0, y: 0, z: 0}
   newRotation: {x: 0, y: 0, z: 0, w: 0}
+  newZoom: {x: 0, y: 0, z: 0}
+  dragStartPosition: {x: 0, y: 0, z: 0}
+  dragCurrentPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1154200769
 Transform:
   m_ObjectHideFlags: 0
