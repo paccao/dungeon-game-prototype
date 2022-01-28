@@ -65,7 +65,7 @@ public class CameraController : MonoBehaviour
 			newZoom += Input.mouseScrollDelta.y * zoomAmountScroll;
 		}
 
-		if (Input.GetMouseButtonDown(0) && !Input.GetKey(KeyCode.LeftAlt))
+		if (Input.GetMouseButtonDown(1) && !Input.GetKey(KeyCode.LeftAlt))
 		{
 			Plane plane = new Plane(Vector3.up, Vector3.zero);
 
@@ -79,7 +79,7 @@ public class CameraController : MonoBehaviour
 			}
 		}
 
-		if (Input.GetMouseButton(0) && !Input.GetKey(KeyCode.LeftAlt))
+		if (Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftAlt))
 		{
 			Plane plane = new Plane(Vector3.up, Vector3.zero);
 
@@ -95,7 +95,7 @@ public class CameraController : MonoBehaviour
 			}
 		}
 
-		if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftAlt))
+		if (Input.GetMouseButtonDown(1) && Input.GetKey(KeyCode.LeftAlt))
 		{
 			rotateStartPosition = Input.mousePosition;
 		}
