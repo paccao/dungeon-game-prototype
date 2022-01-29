@@ -7,17 +7,17 @@ public class CameraController : MonoBehaviour
 	public Transform followTransform;
 	public Transform cameraTransform;
 
-	private float normalSpeed = 0.07f;
-	private float fastSpeed = 0.12f;
-	private float movementSpeed = 0.07f;
+	private float normalSpeed = 0.14f;
+	private float fastSpeed = 0.17f;
+	private float movementSpeed = 0.14f;
 	private float movementTime = 5f;
 	private float rotationAmount = 0.33f;
 	private float rotationPanAmount = 8f;
 
-	private float minY = 3f;
-	private float maxY = 30f;
-	private float minZ = 3f;
-	private float maxZ = 30f;
+	private float minY = 0f;
+	private float maxY = 19f;
+	private float minZ = 0f;
+	private float maxZ = 19f;
 
 	[SerializeField] private Vector3 zoomAmount; // Y -0.055 Z 0.055
 	[SerializeField] private Vector3 zoomAmountScroll; // Y -8 Z 8
@@ -151,15 +151,6 @@ public class CameraController : MonoBehaviour
 		{
 			newRotation *= Quaternion.Euler(-Vector3.up * -rotationAmount);
 			// transform.RotateAround(cameraTransform.position, Vector3.down, rotationAmount * Time.deltaTime);
-		}
-
-		if (Input.GetKey(KeyCode.R))
-		{
-			newZoom += zoomAmount;
-		}
-		if (Input.GetKey(KeyCode.F))
-		{
-			newZoom -= zoomAmount;
 		}
 
 		newZoom.y = Mathf.Clamp(newZoom.y, minY, maxY);
