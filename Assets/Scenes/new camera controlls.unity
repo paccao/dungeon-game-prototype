@@ -521,9 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05496a9845013964990c56b1411c727e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask:
+  Mask:
     serializedVersion: 2
     m_Bits: 512
+  Player: {fileID: 1825368069}
 --- !u!65 &999567867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -979,7 +980,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 6
+  speed: 5.5
 --- !u!1 &1900116459
 GameObject:
   m_ObjectHideFlags: 0

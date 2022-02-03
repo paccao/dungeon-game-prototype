@@ -2,31 +2,30 @@ using UnityEngine;
 
 public class EnemyClass : MonoBehaviour
 {
-	private float range = 25f;
-	[SerializeField] private LayerMask mask;
-
-	// EnemyClass(float enemyRange)
-	// {
-	// 	range = enemyRange;
-	// }
+	private float _range = 25f;
+	[SerializeField] private LayerMask Mask;
+	[SerializeField]
+	private Transform Player;
 
 	void Update()
 	{
-		OnDetectPlayer();
+		Vector3 directionToPlayer = Player.transform.position - transform.position;
+		directionToPlayer.Normalize();
+		OnDetectPlayer(directionToPlayer);
 	}
 
-	void OnDetectPlayer()
+	void OnDetectPlayer(Vector3 directionToPlayer)
 	{
-		Ray ray = new Ray(transform.position, transform.forward);
+		Ray ray = new Ray(transform.position, directionToPlayer);
 		RaycastHit hitInfo;
 
-		if (Physics.Raycast(ray, out hitInfo, range, mask))
+		if (Physics.Raycast(ray, out hitInfo, _range, Mask))
 		{
 			Debug.DrawLine(ray.origin, hitInfo.point, Color.red);
 		}
 		else
 		{
-			Debug.DrawLine(ray.origin, ray.origin + ray.direction * range, Color.green);
+			Debug.DrawLine(ray.origin, ray.origin + ray.direction * _range, Color.green);
 		}
 	}
 }
